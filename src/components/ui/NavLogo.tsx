@@ -1,10 +1,7 @@
 'use client'
 import Link from 'next/link'
 
-export interface NavLogo {
-    label: string
-    href: string
-}
+export interface NavLogo {label: string, href: string}
 
 export function NavLogo() {
     return (
