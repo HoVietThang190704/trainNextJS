@@ -2,19 +2,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
-
-export interface NavItem {
-    label: string
-    href: string
-    hasDropdown?: boolean
-    dropdownItems?: DropdownItem[]
-}
-
-interface DropdownItem {
-    label: string
-    href: string
-    description?: string
-}
+import { NavItem } from '../../types/navigation'
 
 export const navItems: NavItem[] = [
     { label: 'SHOP', href: '/shop' },
@@ -37,6 +25,9 @@ export const navItems: NavItem[] = [
 
 export function NavItems() {
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+    const handleDropdownClick = (label: string) => {
+        setActiveDropdown((prev) => (prev === label ? null : label))
+    }
 
     return (
         <div className='hidden md:block'>
@@ -49,6 +40,7 @@ export function NavItems() {
                                     className='flex items-center space-x-1 text-sm font-medium text-gray-700 hover:text-gray-900'
                                     onMouseEnter={() => setActiveDropdown(item.label)}
                                     onMouseLeave={() => setActiveDropdown(null)}
+                                    onClick={() => handleDropdownClick(item.label)}
                                 >
                                     <span>{item.label}</span>
                                     <ChevronDown size={12} />
