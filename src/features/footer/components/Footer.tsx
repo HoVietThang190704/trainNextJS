@@ -57,7 +57,7 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://www.facebook.com/VietThang1907/"
                 className="bg-gray-800 hover:bg-gray-700 p-3 rounded-lg transition-colors"
                 aria-label="Facebook"
               >
