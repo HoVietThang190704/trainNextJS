@@ -38,4 +38,32 @@ export class ProductEntity implements Product {
   belongsToCategory(category: string): boolean {
     return this.category?.toLowerCase() === category.toLowerCase();
   }
+
+  static fromPlain(plain: Product): ProductEntity {
+    return new ProductEntity(
+      plain.id,
+      plain.name,
+      plain.price,
+      plain.image,
+      plain.category,
+      plain.description || ''
+    );
+  }
+
+  getDiscountedPrice(discount: number): number {
+    return this.price * (1 - discount / 100);
+  }
+
+  isInStock(): boolean {
+    return true; 
+  }
+
+}
+
+export interface CartItem extends Product {
+  id: string;
+  name: string;
+  price: number;
+  image: string;
+  quantity: number;
 }

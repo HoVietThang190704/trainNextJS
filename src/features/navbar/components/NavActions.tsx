@@ -11,7 +11,7 @@ export function NavActions() {
 
   return (
     <div className='hidden md:flex items-center space-x-6'> 
-      <Link href='/cart' className='flex items-center space-x-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors'>
+      <Link href='/cart' className='flex items-center space-x-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-transform hover:scale-105'>
         <ShoppingCart size={18} />
         <span>CART ({cartCount})</span>
       </Link>
@@ -19,7 +19,7 @@ export function NavActions() {
       <div className='relative'>
         <button 
           onClick={() => setIsSearchOpen(!isSearchOpen)}
-          className='flex items-center space-x-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors'
+          className='flex items-center space-x-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-transform hover:scale-105'
         >
           <Search size={18} />
           <span>SEARCH</span>

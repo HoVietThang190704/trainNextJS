@@ -3,8 +3,8 @@ import { IProductRepository } from '../../usecases/ports/IRepository';
 
 const mockProducts: Product[] = [
   new ProductEntity('1', 'Stylish Backpack', 120, '/images/stylish.jpg', 'bags'),
-  new ProductEntity('2', 'Red Backpack', 220, '/images/stylish.jpg', 'bags'),
-  new ProductEntity('3', 'Black Backpack', 320, '/images/stylish.jpg', 'bags'),
+  new ProductEntity('2', 'Red Backpack', 220, '/images/red.jpg', 'bags'),
+  new ProductEntity('3', 'Black Backpack', 320, '/images/black.jpg', 'bags'),
 ];
 
 export class HttpProductRepository implements IProductRepository {
@@ -32,3 +32,6 @@ export class HttpProductRepository implements IProductRepository {
     });
   }
 }
+
+// Tạo instance singleton để sử dụng dễ dàng
+export const productRepository = new HttpProductRepository();
