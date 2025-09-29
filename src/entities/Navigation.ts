@@ -29,7 +29,6 @@ export class NavItemEntity implements NavItem {
     }
   }
 
-  // Business logic methods
   isActive(currentPath: string): boolean {
     return this.href === currentPath;
   }

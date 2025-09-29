@@ -38,9 +38,7 @@ export function NavItems() {
             {item.hasDropdown ? (
               <>
                 <button
-                  className='flex items-center space-x-1 text-sm font-medium text-gray-700 hover:text-gray-900'
-                //   onMouseEnter={() => setActiveDropdown(item.label)}
-                //   onMouseLeave={() => setActiveDropdown(null)}
+                  className='flex items-center space-x-1 text-sm font-medium text-gray-700 hover:text-gray-900 transition-transform hover:scale-105'
                   onClick={() => handleDropdownClick(item.label)}
                 >
                   <span>{item.label}</span>
@@ -58,7 +56,7 @@ export function NavItems() {
                         <Link
                           key={dropdownItem.label}
                           href={dropdownItem.href}
-                          className='block px-4 py-3 hover:bg-gray-50 transition-colors'
+                          className='block px-4 py-3 hover:bg-gray-50 transition-transform hover:scale-105'
                         >
                           <div className='text-sm font-medium text-gray-900'>
                             {dropdownItem.label}
@@ -77,7 +75,7 @@ export function NavItems() {
             ) : (
               <Link
                 href={item.href}
-                className='text-sm font-medium text-gray-700 hover:text-gray-900'
+                className='text-sm font-medium text-gray-700 hover:text-gray-900 transition-transform hover:scale-105'
               >
                 {item.label}
               </Link>

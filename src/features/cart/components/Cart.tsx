@@ -2,37 +2,32 @@
 
 import Image from 'next/image';
 import { useCartStore } from '../../../stores/cartStore';
+import ProductImage from '@/shared/ui/ProductImage';
 
 export default function Cart() {
-  const { items, clearCart, removeItem, getTotalPrice } = useCartStore();
+  const { cart, clearCart, removeItem, getTotalPrice } = useCartStore();
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      <h2 className="text-2xl font-semibold mb-6">Your Cart ({items.length} items)</h2>
-      {items.length === 0 ? (
-        <p className="text-muted">Your cart is empty.</p>
+    <div className="max-w-full mx-auto px-6 sm:px-8 lg:px-12 py-12">
+      <h2 className="text-3xl font-semibold mb-8">Your Cart ({cart.length} items)</h2>
+      {cart.length === 0 ? (
+        <p className="text-muted text-lg">Your cart is empty.</p>
       ) : (
         <>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {items.map((cartItem) => (
-              <div key={cartItem.id} className="bg-card p-4 rounded-lg shadow-md">
-                <Image
-                  src={cartItem.product.image}
-                  alt={cartItem.product.name}
-                  width={300}
-                  height={200}
-                  className="w-full h-48 object-cover rounded-md mb-4"
-                />
-                <h3 className="text-lg font-medium">{cartItem.product.name}</h3>
-                <p className="text-muted">
-                  ${cartItem.product.price.toFixed(2)} × {cartItem.quantity}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {cart.map((cartItem) => (
+              <div key={cartItem.id} className="bg-card p-6 rounded-lg shadow-md">
+                <ProductImage src={cartItem.image} alt={cartItem.name} />
+                <h3 className="text-xl font-medium mt-4">{cartItem.name}</h3>
+                <p className="text-muted text-lg mt-2">
+                  ${cartItem.price.toFixed(2)} × {cartItem.quantity}
                 </p>
-                <p className="text-sm font-semibold">
-                  Total: ${(cartItem.product.price * cartItem.quantity).toFixed(2)}
+                <p className="text-lg font-semibold mt-2">
+                  Total: ${(cartItem.price * cartItem.quantity).toFixed(2)}
                 </p>
                 <button
                   onClick={() => removeItem(cartItem.id)}
-                  className="mt-2 px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 transition text-sm"
+                  className="mt-4 px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition text-base w-full"
                 >
                   Remove
                 </button>
@@ -40,18 +35,18 @@ export default function Cart() {
             ))}
           </div>
           
-          <div className="mt-8 p-4 bg-card rounded-lg shadow-md">
-            <h3 className="text-xl font-semibold">
+          <div className="mt-12 p-8 bg-card rounded-lg shadow-md">
+            <h3 className="text-2xl font-semibold">
               Total: ${getTotalPrice().toFixed(2)}
             </h3>
-            <div className="mt-4 flex gap-4">
+            <div className="mt-6 flex gap-6">
               <button
                 onClick={clearCart}
-                className="px-4 py-2 bg-destructive text-destructive-foreground rounded-md hover:bg-destructive-foreground hover:text-destructive transition"
+                className="px-6 py-3 bg-destructive text-destructive-foreground rounded-lg hover:bg-destructive-foreground hover:text-destructive transition text-lg"
               >
                 Clear Cart
               </button>
-              <button className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary-foreground hover:text-primary transition">
+              <button className="px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary-foreground hover:text-primary transition text-lg">
                 Checkout
               </button>
             </div>

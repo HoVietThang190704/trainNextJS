@@ -1,12 +1,10 @@
 import { Product } from './Product';
-
 export interface CartItem {
   readonly id: string;
   readonly product: Product;
   readonly quantity: number;
   readonly addedAt: Date;
 }
-
 export class CartItemEntity implements CartItem {
   constructor(
     public readonly id: string,
