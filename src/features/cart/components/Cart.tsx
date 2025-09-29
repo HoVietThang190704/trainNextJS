@@ -1,6 +1,4 @@
 'use client';
-
-import Image from 'next/image';
 import { useCartStore } from '../../../stores/cartStore';
 import ProductImage from '@/shared/ui/ProductImage';
 

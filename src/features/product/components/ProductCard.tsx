@@ -1,5 +1,4 @@
 'use client';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useCartStore } from '../../../stores/cartStore';
 import { PlainProduct, ProductMapper } from '../../../adapters/mappers/ProductMapper';
